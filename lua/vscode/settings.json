@@ -1,0 +1,81 @@
+{
+    //For nvimextention to run on different process, load first
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    //number line
+    "editor.lineNumbers": "relative",
+    //Theme
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.iconTheme": "eq-material-theme-icons-darker",
+    //terminal
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    //Fonts
+    "terminal.integrated.fontFamily": "Geist Mono",
+    "editor.fontFamily": "Geist Mono",
+    //Font size
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+    //UI
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.vertical": "auto",
+    "editor.scrollbar.horizontal": "auto",
+    "window.titleBarStyle": "custom",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.activityBar.location": "hidden",
+    //APC custom css
+    //!needs the apc extention to work
+    "apc.activityBar": {
+        "position": "bottom",
+        "hideSettings": true,
+        "size": 28
+    },
+    "apc.stylesheet": {
+        ".monaco-tree .monaco-tree-row .label-name, .monaco-list .monaco-list-row .monaco-icon-label .label-name ": "font-family: 'Geist Mono', monospcae !important; font-size: 14 !important; font-weight: 400;",
+    },
+    //Misc
+    "workbench.startupEditor": "none",
+    "window.menuBarVisibility": "classic",
+    "editor.wordWrap": "bounded",
+    "breadcrumbs.filePath": "off",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.linkedEditing": true,
+    "files.trimTrailingWhitespace": true,
+    // colorscheme changes
+    "workbench.colorCustomizations": {
+        //oops just changed the color scheme lol
+    },
+    //settings for nvim extention
+    "vscode-neovim.useWSL": false,
+    //for jk to escape back to normal mode
+    "vscode-neovim.compositeKeys": {
+        "jk": {
+            // Use lua to execute any logic
+            "command": "vscode-neovim.lua",
+            "args": [
+                [
+                    "local code = require('vscode')",
+                    "code.action('vscode-neovim.escape')",
+                    "code.action('workbench.action.files.save')",
+                ],
+            ],
+        },
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.openRepositoryInParentFolders": "always",
+    "editor.wordWrapColumn": 250,
+    "editor.formatOnSave": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    "explorer.compactFolders": false
+}

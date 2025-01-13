@@ -4,4 +4,4 @@ Config for my neovim workflow,
 
 
 ## Based on KICKSTART.NVIM
-- THE OLD README
+- [THE OLD README](README_OLD.md)

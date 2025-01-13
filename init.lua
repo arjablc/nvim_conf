@@ -1,5 +1,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require 'knot.configs'
-require 'knot.plugin'
+local isVsCode = vim.g.vscode
+if isVsCode then
+  require 'vs_code'
+else
+  require 'knot.configs'
+  require 'knot.plugin'
+end

@@ -24,6 +24,8 @@ require('lazy').setup {
       lazy = '💤 ',
     },
   },
+  checker = { enabled = false },
+  change_detection = { notify = false },
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`

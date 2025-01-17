@@ -61,3 +61,6 @@ vim.opt.scrolloff = 10
 
 -- For the colors
 vim.opt.termguicolors = true
+
+-- Auto read external changes, useful with lazygit
+vim.opt.autoread = true

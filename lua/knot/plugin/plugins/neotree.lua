@@ -14,6 +14,9 @@ return {
           ['<C-k'] = 'move_cursor_up',
         },
       },
+      mapping = {
+        ['Z'] = 'expand_all_nodes',
+      },
     }
 
     local keymap = vim.keymap -- for conciseness

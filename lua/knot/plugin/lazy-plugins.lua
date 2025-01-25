@@ -1,8 +1,6 @@
 require('lazy').setup {
 
   spec = {
-
-    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
     { import = 'knot.plugin.plugins' },
   },
   ui = {

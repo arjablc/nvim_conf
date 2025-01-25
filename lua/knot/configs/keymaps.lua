@@ -9,6 +9,9 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', 'U', '<C-r>', { desc = 'Better redo button' })
 
+-- ctrl backspace for deletion
+vim.keymap.set('i', '<C-BS>', '<C-w>', { desc = 'ctrl backspace for delete word' })
+
 -- Diagnostic keymaps
 -- TODO: remove this for trouble.nvim vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -34,6 +37,8 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<leader>sm', '<C-w>|', { desc = 'Maximize width of split' })
+vim.keymap.set('n', '<leader>s=', '<C-w>=', { desc = 'Equalizeo split' })
 
 -- For half page scroll and center cursor_pos
 --

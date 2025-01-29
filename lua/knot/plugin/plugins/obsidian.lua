@@ -2,17 +2,19 @@ return {
   'epwalsh/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
   lazy = true,
-  -- ft = "markdown",
-  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  event = {
-    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-    -- refer to `:h file-pattern` for more examples
-    'BufReadPre '
-      .. vim.fn.expand '~'
-      .. '/notes/*.md',
-    'BufNewFile ' .. vim.fn.expand '~' .. '/notes/*.md',
+  ft = 'markdown',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
   },
+
+  -- event = {
+
+  -- Load plugin for markdown files in the specified path
+  -- 'BufReadPre '
+  --   .. vim.fn.expand '~'
+  --   .. '/notes/*.md',
+  -- 'BufNewFile ' .. vim.fn.expand '~' .. '/notes/*.md',
+  -- },
   config = function()
     require('obsidian').setup {
       workspaces = {
@@ -24,26 +26,24 @@ return {
       ui = {
         enable = true,
       },
-      -- Optional, customize how note IDs are generated given an optional title.
-      ---@param title string|?
+      -- Optional: Customize how note IDs are generated given an optional title.
+      ---@param title string|nil
       ---@return string
       note_id_func = function(title)
-        -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-        -- In this case a note with the title 'My new note' will be given an ID that looks
-        -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
         local suffix = ''
         if title ~= nil then
-          -- If title is given, transform it into valid file name.
-          suffix = title:gsub(' ', '_'):gsub('[^A-Za-z0-9-]', ''):lower()
+          -- If title is given, transform it into a valid file name.
+          suffix = title:gsub(' ', '_'):gsub('[^A-Za-z0-9_-]', ''):lower()
         else
-          -- If title is nil, just add 4 random uppercase letters to the suffix.
+          -- If title is nil, generate a random 4-character suffix.
           for _ = 1, 4 do
-            suffix = suffix .. string.char(math.random(65, 90))
+            suffix = suffix .. string.char(math.random(65, 90)) -- Random uppercase letters
           end
         end
-        return suffix
+        return os.time() .. '-' .. suffix -- Include a timestamp for uniqueness
       end,
     }
+    -- Set conceallevel for markdown files to improve readability
     vim.opt_local.conceallevel = 2
   end,
 }

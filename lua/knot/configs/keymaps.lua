@@ -10,7 +10,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', 'U', '<C-r>', { desc = 'Better redo button' })
 
 -- ctrl backspace for deletion
-vim.keymap.set('i', '<C-BS>', '<C-w>', { desc = 'ctrl backspace for delete word' })
+-- vim.keymap.set('i', '<C-BS>', '<C-w>', { desc = 'ctrl backspace for delete word' })
 
 -- Diagnostic keymaps
 -- TODO: remove this for trouble.nvim vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

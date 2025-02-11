@@ -1,4 +1,3 @@
-
 return { -- Collection of various small independent plugins/modules
   'echasnovski/mini.nvim',
   config = function()
@@ -9,6 +8,87 @@ return { -- Collection of various small independent plugins/modules
     --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
     --  - ci'  - [C]hange [I]nside [']quote
     require('mini.ai').setup { n_lines = 500 }
+
+    --for mini filesystem
+    --
+    require('mini.files').setup {}
+    -- Keybindings
+    vim.keymap.set('n', '<leader>fm', function()
+      require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
+    end, { desc = 'Open mini.files (Directory of Current File)' })
+
+    vim.keymap.set('n', '<leader>fM', function()
+      require('mini.files').open(vim.uv.cwd(), true)
+    end, { desc = 'Open mini.files (cwd)' })
+
+    -- Toggle Hidden Files
+    local show_dotfiles = true
+    local filter_show = function(_)
+      return true
+    end
+    local filter_hide = function(fs_entry)
+      return not vim.startswith(fs_entry.name, '.')
+    end
+
+    local toggle_dotfiles = function()
+      show_dotfiles = not show_dotfiles
+      local new_filter = show_dotfiles and filter_show or filter_hide
+      require('mini.files').refresh { content = { filter = new_filter } }
+    end
+
+    -- Split Navigation
+    local function map_split(buf_id, lhs, direction, close_on_file)
+      local rhs = function()
+        local new_target_window
+        local cur_target_window = require('mini.files').get_explorer_state().target_window
+        if cur_target_window ~= nil then
+          vim.api.nvim_win_call(cur_target_window, function()
+            vim.cmd('belowright ' .. direction .. ' split')
+            new_target_window = vim.api.nvim_get_current_win()
+          end)
+
+          require('mini.files').set_target_window(new_target_window)
+          require('mini.files').go_in { close_on_file = close_on_file }
+        end
+      end
+
+      local desc = 'Open in ' .. direction .. ' split' .. (close_on_file and ' and close' or '')
+      vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+    end
+
+    -- Change CWD to Current File's Directory
+    local function files_set_cwd()
+      local cur_entry_path = require('mini.files').get_fs_entry().path
+      local cur_directory = vim.fs.dirname(cur_entry_path)
+      if cur_directory ~= nil then
+        vim.fn.chdir(cur_directory)
+      end
+    end
+
+    -- Auto Commands for MiniFiles
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesBufferCreate',
+      callback = function(args)
+        local buf_id = args.data.buf_id
+
+        vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id, desc = 'Toggle hidden files' })
+        vim.keymap.set('n', 'gc', files_set_cwd, { buffer = buf_id, desc = 'Set cwd' })
+
+        map_split(buf_id, '<C-w>s', 'horizontal', false)
+        map_split(buf_id, '<C-w>v', 'vertical', false)
+        map_split(buf_id, '<C-w>S', 'horizontal', true)
+        map_split(buf_id, '<C-w>V', 'vertical', true)
+      end,
+    })
+
+    -- File Rename Hook (You may need to replace `Snacks.rename.on_rename_file` with your own function)
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesActionRename',
+      callback = function(event)
+        -- Replace with your custom function if needed
+        print('File renamed from ' .. event.data.from .. ' to ' .. event.data.to)
+      end,
+    })
 
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     --
@@ -36,4 +116,3 @@ return { -- Collection of various small independent plugins/modules
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
 }
-

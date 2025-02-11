@@ -3,7 +3,7 @@ vim.g.maplocalleader = ' '
 
 local isVsCode = vim.g.vscode
 if isVsCode then
-  require 'vs_code'
+  require 'vscode'
 else
   require 'knot.configs'
   require 'knot.plugin'

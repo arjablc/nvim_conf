@@ -27,6 +27,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
 
+    local actions = require 'telescope.actions'
+    local telescope = require 'telescope'
     require('telescope').setup {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
@@ -34,8 +36,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
       defaults = {
         mappings = {
           i = {
-            ['<C-k>'] = require('telescope.actions').move_selection_previous,
-            ['<C-j>'] = require('telescope.actions').move_selection_next,
+            ['<C-k>'] = actions.move_selection_previous,
+            ['<C-j>'] = actions.move_selection_next,
           },
         },
       },
@@ -48,8 +50,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
     }
 
     -- Enable Telescope extensions if they are installed
-    pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'ui-select')
+    pcall(telescope.load_extension, 'fzf')
+    pcall(telescope.load_extension, 'ui-select')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'

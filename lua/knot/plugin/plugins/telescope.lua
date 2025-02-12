@@ -4,7 +4,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'folke/todo-comments.nvim',
+    {
+
+      'folke/todo-comments.nvim',
+      event = { 'BufReadPre' },
+      cmd = { 'TodoTelescope' },
+    },
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
       'nvim-telescope/telescope-fzf-native.nvim',
 

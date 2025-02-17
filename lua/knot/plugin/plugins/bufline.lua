@@ -34,7 +34,7 @@ return {
           style = 'underline',
         },
 
-        diagnostics = 'nvim_lsp',
+        diagnostics = false,
         always_show_bufferline = false,
         -- diagnostics_update_on_insert = true,
         diagnostics_indicator = function(_, _, diag)

@@ -43,7 +43,7 @@ return { -- Autoformat
       html = { 'prettier' },
       json = { 'prettier' },
       yaml = { 'prettier' },
-      markdown = { 'markdownlint' },
+      markdown = { 'prettier' },
       graphql = { 'prettier' },
       liquid = { 'prettier' },
       python = { 'isort', 'black' },

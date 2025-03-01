@@ -6,7 +6,6 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-
   -- event = {
 
   -- Load plugin for markdown files in the specified path
@@ -26,6 +25,7 @@ return {
       ui = {
         enable = true,
       },
+
       -- Optional: Customize how note IDs are generated given an optional title.
       ---@param title string|nil
       ---@return string
@@ -40,7 +40,8 @@ return {
             suffix = suffix .. string.char(math.random(65, 90)) -- Random uppercase letters
           end
         end
-        return os.time() .. '-' .. suffix -- Include a timestamp for uniqueness
+        -- return os.time() .. '-' .. suffix -- Include a timestamp for uniqueness
+        return '' .. suffix
       end,
     }
     -- Set conceallevel for markdown files to improve readability

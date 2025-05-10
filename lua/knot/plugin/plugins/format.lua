@@ -43,10 +43,10 @@ return { -- Autoformat
       html = { 'prettier' },
       json = { 'prettier' },
       yaml = { 'prettier' },
-      markdown = { 'prettier' },
+      markdown = { 'markdown-toc' },
       graphql = { 'prettier' },
       liquid = { 'prettier' },
-      python = { 'isort', 'black' },
+      python = { 'black', 'isort' },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       -- javascript = { "prettierd", "prettier", stop_after_first = true },

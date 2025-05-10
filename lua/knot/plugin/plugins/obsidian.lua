@@ -44,7 +44,6 @@ return {
         return '' .. suffix
       end,
     }
-    -- Set conceallevel for markdown files to improve readability
     vim.opt_local.conceallevel = 2
   end,
 }

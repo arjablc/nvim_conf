@@ -24,8 +24,16 @@ vim.g.maplocalleader = '\\'
 -- Setup lazy.nvim
 require('lazy').setup {
   spec = {
-    -- import your plugins
-    { import = 'vs_code.plugins' },
+
+    {
+      'echasnovski/mini.ai',
+      opts = {},
+    },
+    {
+
+      'echasnovski/mini.surround',
+      opts = {},
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.

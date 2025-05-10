@@ -18,7 +18,6 @@ return {
         register_configurations = function(paths)
           require('dap').configurations.dart = {
             --put here config that you would find in .vscode/launch.json
-            require('dap.ext.vscode').getconfigs '',
           }
           -- If you want to load .vscode launch.json automatically run the following:
           -- require("dap.ext.vscode").load_launchjs()

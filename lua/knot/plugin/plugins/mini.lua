@@ -8,14 +8,14 @@ return { -- Collection of various small independent plugins/modules
     keys = {
       -- Keybindings
       {
-        '<leader>fm',
+        '<leader>em',
         function()
           require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
         end,
         desc = 'Open mini.files (Directory of Current File)',
       },
       {
-        '<leader>fM',
+        '<leader>eM',
         function()
           require('mini.files').open(vim.uv.cwd(), true)
         end,
@@ -98,13 +98,11 @@ return { -- Collection of various small independent plugins/modules
     end,
   },
   {
-
     'echasnovski/mini.surround',
     opts = {},
   },
   {
     'echasnovski/mini.statusline',
-
     config = function()
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,

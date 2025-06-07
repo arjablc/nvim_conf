@@ -4,7 +4,7 @@ return { -- Autoformat
   cmd = { 'ConformInfo' },
   keys = {
     {
-      '<leader>f',
+      '<leader>ft',
       function()
         require('conform').format { async = true, lsp_format = 'fallback' }
       end,
@@ -15,9 +15,7 @@ return { -- Autoformat
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
-      -- Disable "format_on_save lsp_fallback" for languages that don't
-      -- have a well standardized coding style. You can add additional
-      -- languages here or re-enable it for the disabled ones.
+      -- Disable format_on_save for languages without standardized coding style
       local disable_filetypes = { c = true, cpp = true }
       local lsp_format_opt
       if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -33,19 +31,19 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
-      javascript = { 'prettier' },
-      typescript = { 'prettier' },
-      javascriptreact = { 'prettier' },
-      typescriptreact = { 'prettier' },
-      jasonc = { 'prettier' },
-      svelte = { 'prettier' },
-      css = { 'prettier' },
-      html = { 'prettier' },
-      json = { 'prettier' },
-      yaml = { 'prettier' },
+      javascript = { 'prettierd' },
+      typescript = { 'prettierd' },
+      javascriptreact = { 'prettierd', 'rustywind' },
+      typescriptreact = { 'prettierd', 'rustywind' },
+      jasonc = { 'prettierd' },
+      svelte = { 'prettierd' },
+      css = { 'prettierd' },
+      html = { 'prettierd' },
+      json = { 'prettierd' },
+      yaml = { 'prettierd' },
       markdown = { 'markdown-toc' },
-      graphql = { 'prettier' },
-      liquid = { 'prettier' },
+      graphql = { 'prettierd' },
+      liquid = { 'prettierd' },
       python = { 'black', 'isort' },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list

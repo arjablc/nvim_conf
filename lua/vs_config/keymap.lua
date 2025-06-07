@@ -16,12 +16,8 @@ keymap.set({ 'n' }, '<leader>to', '<cmd>tabonly<CR>', { desc = 'close all tab ex
 
 --for split navigations
 keymap.set({ 'n' }, '<C-k>', "<cmd> lua require('vscode').action('workbench.action.navigateUp')<CR>", { desc = 'Move focus to the up  window' })
-keymap.set({ 'n' }, '<C-k>', "<cmd> lua require('vscode').action('workbench.action.navigateUp')<CR>", { desc = 'Move focus to the up  window' })
-keymap.set({ 'n' }, '<C-j>', "<cmd> lua require('vscode').action('workbench.action.navigateDown')<CR>", { desc = 'Move focus to the down  window' })
 keymap.set({ 'n' }, '<C-j>', "<cmd> lua require('vscode').action('workbench.action.navigateDown')<CR>", { desc = 'Move focus to the down  window' })
 keymap.set({ 'n' }, '<C-h>', "<cmd> lua require('vscode').action('workbench.action.navigateLeft')<CR>", { desc = 'Move focus to the left  window' })
-keymap.set({ 'n' }, '<C-h>', "<cmd> lua require('vscode').action('workbench.action.navigateLeft')<CR>", { desc = 'Move focus to the left  window' })
-keymap.set({ 'n' }, '<C-l>', "<cmd> lua require('vscode').action('workbench.action.navigateRight')<CR>", { desc = 'Move focus to the right  window' })
 keymap.set({ 'n' }, '<C-l>', "<cmd> lua require('vscode').action('workbench.action.navigateRight')<CR>", { desc = 'Move focus to the right  window' })
 
 --terminal navigaition

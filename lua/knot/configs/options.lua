@@ -49,7 +49,6 @@ vim.opt.splitbelow = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
@@ -69,3 +68,9 @@ vim.opt.termguicolors = true
 
 -- Auto read external changes, useful with lazygit
 vim.opt.autoread = true
+
+vim.diagnostic.config {
+  virtual_text = true,
+  update_in_insert = false,
+  signs = true,
+}

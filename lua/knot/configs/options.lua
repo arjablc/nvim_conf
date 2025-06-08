@@ -70,7 +70,9 @@ vim.opt.termguicolors = true
 vim.opt.autoread = true
 
 vim.diagnostic.config {
-  virtual_text = true,
-  update_in_insert = false,
-  signs = true,
+	virtual_text = true,
+	update_in_insert = false,
+	signs = true,
 }
+
+vim.opt.exrc = true
